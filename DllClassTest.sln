@@ -4,6 +4,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestClient", "TestClient\TestClient.vcxproj", "{C538EA0C-006C-420E-87CC-BA677321FE6A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A578775E-E111-4CC6-925A-7F409505DC11} = {A578775E-E111-4CC6-925A-7F409505DC11}
+		{3CFA2993-FD37-4F7C-AF5E-EB3F7E53AB63} = {3CFA2993-FD37-4F7C-AF5E-EB3F7E53AB63}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DmaDriver42", "DmaDriver42\DmaDriver42.vcxproj", "{A578775E-E111-4CC6-925A-7F409505DC11}"
 EndProject
