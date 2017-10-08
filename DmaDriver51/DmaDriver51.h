@@ -5,18 +5,19 @@
 // DMADRIVER51_API functions as being imported from a DLL, whereas this DLL sees symbols
 // defined with this macro as being exported.
 #ifdef DMADRIVER51_EXPORTS
-#define DMADRIVER51_API __declspec(dllexport)
+#define DMADRIVER51_API extern "C" __declspec(dllexport)
 #else
 #define DMADRIVER51_API __declspec(dllimport)
 #endif
 
+#include <DmaDriver.h>
+
 // This class is exported from the DmaDriver51.dll
-class DMADRIVER51_API CDmaDriver51 {
+class CDmaDriver51 : public DmaDriver {
 public:
 	CDmaDriver51(void);
-	// TODO: add your methods here.
+
+	unsigned int Connect(unsigned int);
 };
 
-extern DMADRIVER51_API int nDmaDriver51;
-
-DMADRIVER51_API int fnDmaDriver51(void);
+DMADRIVER51_API DmaDriver * fnDmaDriver51(void);
