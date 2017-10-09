@@ -1,20 +1,20 @@
-// TestClient.cpp : Defines the entry point for the console application.
-//
-
 #include "stdafx.h"
 #include "DmaDriver.h"
-
-typedef DmaDriver * (WINAPI *PFNCREATE)();
 
 int main()
 {
 	HMODULE hDmaLib = LoadLibrary(TEXT("DmaDriver51.dll"));
 	
-	PFNCREATE pfnCreate = (PFNCREATE)GetProcAddress(hDmaLib, "fnDmaDriver51");
+	typedef DmaDriver * (WINAPI *PFNCREATEDMA)();
+	typedef void (WINAPI *PFNRELEASEDMA)(DmaDriver *);
+
+	PFNCREATEDMA pfnCreate = (PFNCREATEDMA)GetProcAddress(hDmaLib, "fmCreateDma");
+	PFNRELEASEDMA pfnRelease = (PFNRELEASEDMA)GetProcAddress(hDmaLib, "fnReleaseDma");
 
 	DmaDriver * dma = pfnCreate();
 	unsigned int status = dma->Connect(0);
 
+	pfnRelease(dma);
 	FreeLibrary(hDmaLib);
 
 	return 0;

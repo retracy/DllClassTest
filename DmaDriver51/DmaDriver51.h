@@ -9,15 +9,3 @@
 #else
 #define DMADRIVER51_API __declspec(dllimport)
 #endif
-
-#include <DmaDriver.h>
-
-// This class is exported from the DmaDriver51.dll
-class CDmaDriver51 : public DmaDriver {
-public:
-	CDmaDriver51(void);
-
-	unsigned int Connect(unsigned int);
-};
-
-DMADRIVER51_API DmaDriver * fnDmaDriver51(void);
